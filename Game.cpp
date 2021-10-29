@@ -9,7 +9,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
         if (m_pWindow != 0) {
             m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
             if(m_pRenderer != 0){
-              SDL_SetRenderDrawColor(m_pRenderer, 255, 255,255,255);
+              SDL_SetRenderDrawColor(m_pRenderer, 0, 0,0,255);
             }else{
               return false;
             }
@@ -25,12 +25,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
     SDL_FreeSurface(pTempSurface);
 
     SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+    m_sourceRectangle.x=0;
+    m_sourceRectangle.y=0;
 
     m_destinationRectangle.w = m_sourceRectangle.w;
     m_destinationRectangle.h = m_sourceRectangle.h;
 
-    m_destinationRectangle.x = m_sourceRectangle.x = 0;
-    m_destinationRectangle.y = m_sourceRectangle.y = 0;
+    m_destinationRectangle.x = 0;
+    m_destinationRectangle.y = 0;
 
     m_bRunning = true;
     return true;
